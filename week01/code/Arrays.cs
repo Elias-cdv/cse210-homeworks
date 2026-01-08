@@ -1,3 +1,5 @@
+using System.IO.Pipelines;
+
 public static class Arrays
 {
     /// <summary>
@@ -8,12 +10,21 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: Create a double array with a size equal to the value of 'length'
+        // Step 2: Use a loop to iterate through each index of the array
+        // Step 3: For each index, calculate the multiple by multiplying 'number' by (index + 1)
+        // Step 4: Store the calculated multiple in the array at the current index
+        // Step 5: Return the completed array
 
-        return []; // replace this return statement with your own
+        double[] multiplesList = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            multiplesList[i] = number * (i + 1);
+        }
+
+
+        return multiplesList;
     }
 
     /// <summary>
