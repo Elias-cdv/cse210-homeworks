@@ -15,3 +15,8 @@
         }
     }
 }
+/*It's O(n²), because there is an loop inside an other loop, 
+on the second depends of the first.*/
+
+
+
