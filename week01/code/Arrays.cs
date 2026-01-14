@@ -43,6 +43,11 @@ public static class Arrays
 
         int listElements = data.Count;
         int startIndex = listElements - amount;
+        
+        List<int> slice = data.GetRange(startIndex,amount);
+        data.RemoveRange(startIndex, amount);
+
+        data.InsertRange(0, slice);
 
     }
 }
