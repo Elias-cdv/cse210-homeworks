@@ -5,8 +5,8 @@
 
     public static float Run(string text) {
         var stack = new Stack<float>();
-        foreach (var item in text.Split(' ')) {
-            if (item == "+" || item == "-" || item == "*" || item == "/") {
+        foreach (var item in text.Split(' ')) { //ir de item en item en el stack y rompe la frase
+            if (item == "+" || item == "-" || item == "*" || item == "/") {//si es operador entonces
                 if (stack.Count < 2)
                     throw new ApplicationException("Invalid Case 1!");
 
