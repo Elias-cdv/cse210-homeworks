@@ -11,3 +11,16 @@
         return result;
     }
 }
+
+/*
+Determine the output of the function if the input text is equal to the following:
+1.-racecar
+2.-stressed
+3.-a nut for a jar of tuna
+
+results:
+1.- racecar
+2.- desserts
+3.- anut fo raj a rof tun a
+
+*/
