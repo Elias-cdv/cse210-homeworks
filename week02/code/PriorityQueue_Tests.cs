@@ -9,7 +9,10 @@ public class PriorityQueueTests
     // Scenario: Enqueue multiple items with different priorities and dequeue them.
     // The item with the highest priority should be dequeued first.
     // Expected Result: Items are dequeued in order of priority (highest first): "High", "Medium", "Low"
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // The Dequeue method had a loop that did not check the last element (_queue.Count - 1 instead
+    // of _queue.Count), causing it to miss the highest priority item if it was at the end.
+    // Additionally, the method did not remove the dequeued item from the queue.
     public void TestPriorityQueue_HighestPriorityFirst()
     {
         var priorityQueue = new PriorityQueue();
@@ -26,7 +29,9 @@ public class PriorityQueueTests
     // Scenario: Enqueue multiple items with the same priority.
     // When priorities are equal, items should be dequeued in FIFO order.
     // Expected Result: Items with same priority are dequeued in the order they were added: "First", "Second", "Third"
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // The Dequeue method used >= instead of > when comparing priorities, which caused it to
+    // select the last item with the highest priority instead of the first one, violating FIFO.
     public void TestPriorityQueue_SamePriorityFollowsFIFO()
     {
         var priorityQueue = new PriorityQueue();
@@ -42,7 +47,10 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Mix of different priorities with some items having the same priority.
     // Expected Result: Higher priority items come first, then FIFO for same priority: "Urgent1", "Urgent2", "Normal1", "Normal2", "Low"
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // The Dequeue method used >= instead of > when comparing priorities, which caused it to
+    // select the last item with the highest priority instead of the first one, violating FIFO
+    // for items with equal priority.
     public void TestPriorityQueue_MixedPriorities()
     {
         var priorityQueue = new PriorityQueue();
@@ -62,7 +70,9 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Try to dequeue from an empty queue.
     // Expected Result: InvalidOperationException with message "The queue is empty."
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // None. This test passed on the initial run as the exception handling was
+    // implemented correctly in the Dequeue method.
     public void TestPriorityQueue_EmptyQueueThrowsException()
     {
         var priorityQueue = new PriorityQueue();
@@ -93,7 +103,10 @@ public class PriorityQueueTests
     // Scenario: Enqueue items, dequeue some, then enqueue more items.
     // Verifies that the queue maintains correct priority order after mixed operations.
     // Expected Result: "High1", "High2", "Medium"
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // The Dequeue method had a loop that did not check the last element (_queue.Count - 1 instead
+    // of _queue.Count), causing it to miss the highest priority item if it was at the end.
+    // Additionally, the method did not remove the dequeued item from the queue.
     public void TestPriorityQueue_EnqueueAfterDequeue()
     {
         var priorityQueue = new PriorityQueue();
@@ -111,7 +124,8 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Single item in queue.
     // Expected Result: That single item is dequeued successfully.
-    // Defect(s) Found: 
+    // Defect(s) Found:
+    // None. This test passed on the initial run as the single-item case worked correctly.
     public void TestPriorityQueue_SingleItem()
     {
         var priorityQueue = new PriorityQueue();
