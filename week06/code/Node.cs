@@ -13,6 +13,10 @@ public class Node
     {
         // TODO Start Problem 1
 
+        if (value == Data)
+        {
+            return;
+        }
         if (value < Data)
         {
             // Insert to the left
